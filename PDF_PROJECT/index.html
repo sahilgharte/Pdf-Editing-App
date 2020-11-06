@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js" integrity="sha512-Z8CqofpIcnJN80feS2uccz+pXWgZzeKxDsDNMD/dJ6997/LSRY+W4NmEt9acwR+Gt9OHN0kkI1CTianCwoqcjQ==" crossorigin="anonymous"></script>
+<link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"crossorigin="anonymous"/>
+<link rel="stylesheet" type="text/css" href="style.css">
+<head>
+	<title>The Pdf App</title>
+</head>
+<body>
+
+	<div class="toolbox left" style="display: inline-block;">
+		<div class="group commands">
+			<div class="item" data-command="undo" title="Undo">
+				<img src="images/undo.png">
+			</div>
+
+			<div class="item" id="download" data-command="download" title="Download">
+				<img src="images/download.png">
+			</div>
+		</div>
+		<div class="group shapes">
+			<div class="item active" data-tool="Line" title="line Tool">
+				<img src="images/line.png">
+			</div>
+			<div class="item" data-tool="Rectangle" title="Rectangle Tool">
+				<img src="images/rectangle.png">
+			</div>
+			<div class="item" data-tool="circle" title="Circle Tool">
+				<img src="images/circle.png">
+			</div>
+			<div class="item" data-tool="triangle" title="Triangle">
+				<img src="images/triangle.png">
+			</div>
+			<!-- <div class="item" data-tool="correct" title="Correct">
+				<img src="images/correct.png">
+			</div>
+			<div class="item" data-tool="incorrect" title="Incorrect">
+				<img src="images/incorrect.png">
+			</div> -->
+		</div>
+
+		<div class="group tools">
+			<div class="item" data-tool="pencil" title="Pencil Tool">
+				<img src="images/pencil.png">
+			</div>
+			<div class="item" data-tool="brush" title="Brush Tool">
+				<img src="images/brush.png">
+			</div>
+
+			<div class="item" data-tool="paint-bucket" title="Paint-Bucket Tool">
+				<img src="images/bucket.png">
+			</div>
+			<div class="item" data-tool="eraser" title="Eraser Tool">
+				<img src="images/erase.png">
+			</div>
+		</div>
+
+		<div class="group linewidths for-shapes" style="display: block;">
+			<div class="item active" data-line-width="1" title="1 Pixel">
+				<div class="linewidth" style="width: 1px;height: 1px;background-color: white;border-radius: 50%;top: 50%;left: 50%;"></div>
+			</div>
+
+			<div class="item" data-line-width="2" title="2 Pixel">
+				<div class="linewidth" style="width: 2px;height: 2px;background-color: white;border-radius: 50%;top: 50%;left: 50%;">
+					
+				</div>
+			</div>
+
+			<div class="item" data-line-width="3" title="3 Pixel">
+				<div class="linewidth" style="width: 3px;height: 3px;background-color: white;border-radius: 50%;top: 50%;left: 50%;">
+					
+				</div>
+			</div>
+
+			<div class="item" data-line-width="4" title="4 Pixel">
+				<div class="linewidth" style="width: 4px;height: 4px;background-color: white;border-radius: 50%;top: 50%;left: 50%;">
+					
+				</div>
+			</div>
+
+			<div class="item" data-line-width="5" title="5 Pixel">
+				<div class="linewidth" style="width: 5px;height: 5px;background-color: white;border-radius: 50%;top: 50%;left: 50%;">
+					
+				</div>
+			</div>
+		
+		</div>
+
+
+		<div class="group linewidths for-brush" style="display: none;">
+			<div class="item active" data-brush-size="4" title="4 Pixel">
+				<div class="linewidth" style="width: 4px;height: 4px;background-color: white;border-radius: 50%;top: 50%;left: 50%;"></div>
+			</div>
+
+			<div class="item" data-brush-size="6" title="6 Pixel">
+				<div class="linewidth" style="width: 6px;height: 6px;background-color: white;border-radius: 50%;top: 50%;left: 50%;">
+					
+				</div>
+			</div>
+
+			<div class="item" data-brush-size="12" title="12 Pixel">
+				<div class="linewidth" style="width: 12px;height: 12px;background-color: white;border-radius: 50%;top: 50%;left: 50%;">
+					
+				</div>
+			</div>
+
+			<div class="item" data-brush-size="14" title="14 Pixel">
+				<div class="linewidth" style="width: 14px;height: 14px;background-color: white;border-radius: 50%;top: 50%;left: 50%;">
+					
+				</div>
+			</div>
+
+			<div class="item" data-brush-size="20" title="20 Pixel">
+				<div class="linewidth" style="width: 20px;height: 20px;background-color: white;border-radius: 50%;top: 50%;left: 50%;">
+					
+				</div>
+			</div>
+		
+		</div>
+	</div>
+
+    <div class="toolbox right" style="right: 0px;
+	top: 0px;position: absolute;overflow: hidden;left: auto;">
+    	<div class="group swatches">
+    		<div class="item swatch" data-color="#ffffff" title="White" style="background-color: #ffffff;">
+    			<!-- <div class="swatch one" style="background-color: #ffffff;"></div> -->
+    		</div>
+    		<div class="item active swatch" data-color="#000000" title="Black" style="background-color: #000000;">
+    			<!-- <div class="swatch" style="background-color: #000000;"></div> -->
+    		</div>
+    		<div class="item swatch" data-color="#ff0000" title="Red" style="background-color: #ff0000;">
+    			<!-- <div class="swatch" style="background-color: #ff0000;"></div> -->
+    		</div>
+    		<div class="item swatch" data-color="#00ff00" title="Green" style="background-color: #00ff00;">
+    			<!-- <div class="swatch" style="background-color: #00ff00;"></div> -->
+    		</div>
+    		<div class="item swatch" data-color="#0000ff" title="Blue" style="background-color: #0000ff;">
+    			<!-- <div class="swatch" style="background-color: #0000ff;"></div> -->
+    		</div>
+    		<div class="item swatch" data-color="#00ffff" title="Cyan" style="background-color: #00ffff;">
+    			<!-- <div class="swatch" style="background-color: #00ffff;"></div> -->
+    		</div>
+
+    		<div class="item swatch" data-color="#ff00ff" title="Magenta" style="background-color: #ff00ff;">
+    			<!-- <div class="swatch" style="background-color: #00ffff;"></div> -->
+    		</div>
+
+    		<div class="item swatch" data-color="#ffff00" title="Yellow" style="background-color: #ffff00;">
+    			<!-- <div class="swatch" style="background-color: #00ffff;"></div> -->
+    		</div>
+
+    		<div class="item swatch" data-color="#c46f0f" title="Dark Orange" style="background-color: #c46f0f;">
+    			<!-- <div class="swatch" style="background-color: #00ffff;"></div> -->
+    		</div>
+
+    		<div class="item swatch" data-color="#fd8f27" title="Light Orange" style="background-color: #fd8f27;">
+    			<!-- <div class="swatch" style="background-color: #00ffff;"></div> -->
+    		</div>
+
+    		<div class="item swatch" data-color="#0099ff" title="Cyan" style="background-color: #0099ff;">
+    			<!-- <div class="swatch" style="background-color: #00ffff;"></div> -->
+    		</div>
+
+    		<div class="item swatch" data-color="#ff009d" title="Cyan" style="background-color: #ff009d;">
+    			<!-- <div class="swatch" style="background-color: #00ffff;"></div> -->
+    		</div>
+
+    		<!-- <div class="item swatch" data-color="" title="Color">
+    			<input type="color" name="Color" width="9px" height="9px">
+    		</div> -->
+    	</div> 
+    </div>
+
+
+
+	<div class="top-bar" style="position: relative;">
+      <button class="btn" id="prev-page">
+        <i class="fas fa-arrow-circle-left"></i> Prev Page
+      </button>
+      <button class="btn" id="next-page">
+        Next Page <i class="fas fa-arrow-circle-right"></i>
+      </button>
+      <span class="page-info">
+        Page <span id="page-num"></span> of <span id="page-count"></span>
+      </span>
+    </div>
+
+    <div class="canvas" style="overflow: scroll;">
+    	<canvas id="canvas" style="border:3px solid grey;"></canvas>
+    </div>
+			
+
+
+
+
+
+ 	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js" integrity="sha512-ICHkAOXzVDEkL5xkXjAWRV/hx6Bq4ID/uhRcnj9zS7QCdCbhVtfgjwt/vTfUBtW1wzBkErImU0huK3LDVeEr8g==" crossorigin="anonymous"></script>
+
+    <link href="//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.1.266/pdf_viewer.css" rel="stylesheet"/>    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.1.266/pdf.js"></script>    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.1.266/pdf_viewer.js"></script>
+    <script src="//cdn.polyfill.io/v2/polyfill.min.js"></script>    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.js"></script>
+    <!-- <script src="https://github.com/mozilla/pdf.js/blob/master/src/pdf.worker.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js" integrity="sha512-ICHkAOXzVDEkL5xkXjAWRV/hx6Bq4ID/uhRcnj9zS7QCdCbhVtfgjwt/vTfUBtW1wzBkErImU0huK3LDVeEr8g==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="app1.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+
+
+
+
+
+</body>
+</html>
